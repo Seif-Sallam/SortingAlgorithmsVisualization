@@ -1,5 +1,5 @@
 *.o
-Build/*
+build/
 .vscode/*
 .so
 imgui.ini
