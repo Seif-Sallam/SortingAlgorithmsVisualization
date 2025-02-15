@@ -10,9 +10,15 @@ add_library(
     ${HEADERS}
 )
 
+if (WIN32)
+    set(OS_LIBRARIES opengl32)
+elseif (UNIX)
+    set(OS_LIBRARIES GL)
+endif()
+
 target_link_libraries(imgui
     PRIVATE
-    GL
+    ${OS_LIBRARIES}
     sfml-graphics
     sfml-window
     sfml-system

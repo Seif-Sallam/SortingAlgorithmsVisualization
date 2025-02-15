@@ -24,7 +24,7 @@ int main(int argc, char const *argv[])
     int size = 100;
     std::vector<int> values(size);
     std::mt19937 randomGen;
-    randomGen.seed(time(0));
+    randomGen.seed((int)time(0));
 
     for (int i = 1; i <= size; i++)
         values[i - 1] = i;
@@ -36,7 +36,7 @@ int main(int argc, char const *argv[])
     sf::View view;
     sf::RectangleShape drawingShape;
     float widthStep = (float)width / (float)size;
-    if (size > width)
+    if ((float)size > width)
         widthStep = 1.0f;
     else
     {
@@ -106,7 +106,7 @@ int main(int argc, char const *argv[])
                 for (int i = 1; i <= size; i++)
                     values[i - 1] = i;
                 std::shuffle(values.begin(), values.end(), randomGen);
-                if (size > width)
+                if ((float)size > width)
                     widthStep = 1.0f;
                 else
                 {
@@ -114,7 +114,7 @@ int main(int argc, char const *argv[])
                 }
                 view.setSize(sf::Vector2f(widthStep * size, ((float)width / (float)height) * widthStep * size));
                 view.setCenter(view.getSize().x / 2.0f, view.getSize().y / 2.0f);
-                drawingShape.setSize(sf::Vector2f(widthStep, height));
+                drawingShape.setSize(sf::Vector2f(widthStep, (float)height));
 
                 if (currentAlgorithm)
                     currentAlgorithm->Reset();
